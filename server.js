@@ -5,38 +5,27 @@ const axios = require('axios');
 const bParser = require('body-parser');
 
 app.use(express.static("public"));
+app.use(bParser.urlencoded({extended: true}));
 app.set('view engine',ejs);
 
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('index.ejs', {country: ""} );
 })
 app.post('/country', (req, res) =>{
+    let country = req.body.country;
 
-    let link = "https://restcountries.eu/rest/v2/name/estonia?fullText=true";
+    let link =`https://restcountries.eu/rest/v2/name/${country}?fullText=true`;
     axios.get(link)
     .then(function(response){
-        console.log(response);
-        let name = response.data.name;
-        let topLevelDomain = response.data.alpha2Code;
-        let callingCode = response.data.callingCodes[0];
-        let capital = response.data.capital;
-        let region = response.data.region;
-        let subregion = response.data.subregion;
-        let population = response.data.population;
-        let timezone = response.data.timezones;
-        let languageInaFullWordInEnglish = response.data.languages[0].name;
-        let currencyCodeNameAndSymbol = "";
-        let aUrlToTheFlagImage = response.data.flag;
-
-        let country = req.body.country;
         
+        let countryObject = response.data[0];
+        res.render("index.ejs", {country: countryObject});
 
     })
     .catch(function(error){
         console.log(error)
     });
 
-    res.render('index.ejs');
 });
 
 const port = 3000;
