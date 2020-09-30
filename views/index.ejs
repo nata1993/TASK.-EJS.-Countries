@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Tunnitöö</title>
+</head>
+<body>
+    <h1>Country selection</h1>
+    <form action="country" method="POST">
+        <select name="country">
+            <option value="estonia">Eesti</option>
+            <option value="sweden">Norra</option>
+            <option value="norway">Rootsi</option>
+        </select>
+        <button type="submit">Get Data</button>
+    </form>
+    <table>
+        <tr>
+            <th colspan="2">Country</th><th></th>
+        </tr>
+        <tr>
+            <td><p>Name:</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Top Level Domain</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Calling Code</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Capital</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Region</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>SubRegion</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Population</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Timezone</p></td><td><p></p><%= %></td>
+        </tr>
+        <tr>
+            <td><p>Language in a full word English</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>Currency code, name and symbol</p></td><td><p><%= %></p></td>
+        </tr>
+        <tr>
+            <td><p>A url to a flag image</p></td><td><p></p></td>
+        </tr>
+    </table>
+</body>
+</html>
