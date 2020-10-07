@@ -8,8 +8,10 @@ app.use(express.static("public"));
 app.use(bParser.urlencoded({extended: true}));
 app.set('view engine',ejs);
 
+var countryObject = null;
+
 app.get('/', (req, res) => {
-    res.render('index.ejs', {country: ""} );
+    res.render('index.ejs');
 })
 app.post('/country', (req, res) =>{
     let country = req.body.country;
@@ -18,8 +20,10 @@ app.post('/country', (req, res) =>{
     axios.get(link)
     .then(function(response){
         
-        let countryObject = response.data[0];
-        res.render("index.ejs", {country: countryObject});
+        countryObject = response.data[0];
+        res.render("index2.ejs", {
+            country: countryObject
+        });
 
     })
     .catch(function(error){
